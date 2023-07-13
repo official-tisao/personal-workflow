@@ -1,23 +1,29 @@
 function treaturl(forminp){
-    document.querySelector("button.c_mj.c_mk.c_ml.c_mm.c_mn.c_mo.c_mp.c_mq.c_mr.c_ms.c_mt.c_mu.c_mv.c_ab.c_s.c_t.c_mw.c_eg.c_eb.c_mx.c_my.c_mz.c_na.c_nb.c_nc.c_nd.c_ne.c_n.c_u.c_nf.c_ng.c_kw.c_av.c_nh.c_ni.c_al.c_hc.c_dx.c_ed.c_cl.c_bq.c_bm.c_lc.c_ld.c_nj.c_nk.c_ew.c_fs.c_k").click();
+    document.querySelector("[data-testid='custom-purge-btn']").click();
+//
+    let txa = document.querySelector("[data-testid='custom-purge-entries']");
+    document.querySelector("div.c_dl.c_rf.c_dk.c_mu.c_mv.c_mt.c_li.c_be.c_bm.c_bg.c_t.c_rg").click();
+    //txa.dispatchEvent(new KeyboardEvent('keypress',  {'key':'h'}));
+    txa.value = forminp;
+    setTimeout(function() {
+        document.querySelector("[data-testid='confirm-custom-purge']").click();
+    }, 2000);
+    }
 
-    document.querySelector("#cf-form-input4").value = forminp;
-
-    document.querySelector("div.c_n.c_mg.c_nu.c_fs.c_nv .c_mj.c_mk.c_ml.c_mm.c_mn.c_mo.c_mp.c_mq.c_mr.c_ms.c_mt.c_mu.c_mv.c_ab.c_s.c_t.c_mw.c_eg.c_eb.c_mx.c_my.c_mz.c_na.c_nb.c_nc.c_nd.c_ne.c_n.c_u.c_nf.c_ng.c_kw.c_av.c_nh.c_ni.c_al.c_hc.c_dx.c_ed.c_bd.c_bq.c_bm.c_lc.c_ld.c_nj.c_nk.c_ew.c_fs.c_nl").click();
-}
-
-var last_index=0;
+var last_index=91;
 var forminp="";
-
+var endL=181;
 var timerts = setInterval(function () {
     forminp="";
-    for(var i =last_index; i<urls.length; i++){
+
+    for(var i =last_index, j=0; j<31 && i<endL; i++,j++){
         forminp += "\r\n" + urls[i];
     }
     last_index = i;
-    
+    console.log(forminp);
     treaturl(forminp);
-    if(i ==urls.length){ clearInterval(timerts); } 
+    if(i == endL){ clearInterval(timerts); } 
 }, 5000);
+console.log(timerts);
 
 
